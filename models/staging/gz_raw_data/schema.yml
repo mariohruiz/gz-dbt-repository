@@ -105,3 +105,23 @@ models:
         description: "Ads margin calculated as operational_margin minus ads_cost"
         tests:
         - not_null
+
+  - name: finance_campaigns_month
+    description: "Aggregated campaign and finance data by month with ads_margin calculation"
+    columns:
+      - name: datemonth
+        description: "The month of the campaign and financial data"
+        tests:
+          - not_null
+      - name: ads_margin
+        description: "Total ads margin for the month"
+        tests:
+          - not_null
+      - name: average_basket
+        description: "Average basket value for the month"
+        tests:
+          - not_null
+      - name: operational_margin
+        description: "Operational margin for the month"
+        tests:
+          - not_null
