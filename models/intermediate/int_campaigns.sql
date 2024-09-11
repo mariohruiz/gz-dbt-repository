@@ -7,7 +7,7 @@ WITH facebook_campaigns AS (
         ads_cost,
         impression,
         click
-    FROM {{ ref('stg_gz_facebook') }}
+    FROM {{ ref('stg_raw__raw_gz_facebook') }}  -- Correct reference for Facebook
 ),
 
 adwords_campaigns AS (
@@ -19,7 +19,7 @@ adwords_campaigns AS (
         ads_cost,
         impression,
         click
-    FROM {{ ref('stg_gz_adwords') }}
+    FROM {{ ref('stg_raw__raw_gz_adwords') }}  -- Correct reference for Adwords
 ),
 
 bing_campaigns AS (
@@ -31,7 +31,7 @@ bing_campaigns AS (
         ads_cost,
         impression,
         click
-    FROM {{ ref('stg_gz_bing') }}
+    FROM {{ ref('stg_raw__raw_gz_bing') }}  -- Correct reference for Bing
 ),
 
 criteo_campaigns AS (
@@ -43,7 +43,7 @@ criteo_campaigns AS (
         ads_cost,
         impression,
         click
-    FROM {{ ref('stg_gz_criteo') }}
+    FROM {{ ref('stg_raw__raw_gz_criteo') }}  -- Correct reference for Criteo
 )
 
 -- Combine all staging models using UNION ALL
@@ -54,3 +54,4 @@ UNION ALL
 SELECT * FROM bing_campaigns
 UNION ALL
 SELECT * FROM criteo_campaigns
+
