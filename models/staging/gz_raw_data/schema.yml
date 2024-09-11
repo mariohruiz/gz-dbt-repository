@@ -60,3 +60,68 @@ sources:
       - name: raw_gz_facebook
         alias: facebook
         description: Facebook ad campaign data
+
+models:
+  - name: int_campaigns_day
+    description: "Aggregated ad campaign data by day"
+    columns:
+      - name: date_date
+        description: "The date of the ad campaigns"
+        tests:
+          - not_null
+      - name: ads_cost
+        description: "Total ads cost for the day"
+        tests:
+          - not_null
+      - name: ads_impression
+        description: "Total ad impressions for the day"
+        tests:
+          - not_null
+      - name: ads_clicks
+        description: "Total ad clicks for the day"
+        tests:
+          - not_null
+          
+  - name: finance_campaigns_day
+    description: "Aggregated campaign and finance data by day with ads_margin calculation"
+    columns:
+      - name: date_date
+        description: "The date of the campaign and financial data"
+        tests:
+          - not_null
+      - name: ads_cost
+        description: "Total ads cost for the day"
+        tests:
+        - not_null
+      - name: average_basket
+        description: "Average basket value for the day"
+        tests:
+        - not_null
+      - name: operational_margin
+        description: "Operational margin for the day"
+        tests:
+        - not_null
+      - name: ads_margin
+        description: "Ads margin calculated as operational_margin minus ads_cost"
+        tests:
+        - not_null
+
+  - name: finance_campaigns_month
+    description: "Aggregated campaign and finance data by month with ads_margin calculation"
+    columns:
+      - name: datemonth
+        description: "The month of the campaign and financial data"
+        tests:
+          - not_null
+      - name: ads_margin
+        description: "Total ads margin for the month"
+        tests:
+          - not_null
+      - name: average_basket
+        description: "Average basket value for the month"
+        tests:
+          - not_null
+      - name: operational_margin
+        description: "Operational margin for the month"
+        tests:
+          - not_null
