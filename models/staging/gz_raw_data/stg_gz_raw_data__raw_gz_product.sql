@@ -2,13 +2,15 @@ with
 
 source as (
 
-    select * from {{ source('raw_gz_sales', 'raw_gz_sales') }}
+    select * from {{ source('raw', 'product') }}
 
 ),
 
 renamed as (
 
     select
+        products_id,
+        purchse_price
 
     from source
 
